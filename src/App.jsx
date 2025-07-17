@@ -5,7 +5,8 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <div className="App container">
+    <div className="">
+      {/* App container  */}
       <Navbar />
       <Outlet />
     </div>

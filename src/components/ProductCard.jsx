@@ -13,6 +13,7 @@ import {
 import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
@@ -26,31 +27,31 @@ const ProductCard = () => {
 
     fetchProducts();
   }, []);
-  console.log(products);
+  // console.log(products);
   return (
     <Box className="my-5">
-      <Grid container spacing={2} justifyContent="center" alignItems="center">
+      <Grid  container spacing={2} justifyContent="center" alignItems="center">
         {products?.map((product) => {
           return (
-            <Grid item xs={12} sm={6} md={4} lg={3}>
-              <Card
-                sx={{
-                  minWidth: 240,
-                  maxWidth: 280,
-                  height: "100%",
-                  display: "flex",
-                  flexDirection: "column",
-                  transition: "all 0.3s ease-in-out",
-                  "&:hover": {
-                    transform: "translateY(-8px)",
-                    boxShadow: "0 12px 20px rgba(0,0,0,0.15)",
-                  },
-                  borderRadius: 1,
-                  padding: 1,
-                  overflow: "hidden",
-                }}
-              >
-                <Box sx={{ position: "relative" }}>
+            <Card
+              sx={{
+                minWidth: 240,
+                maxWidth: 280,
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+                transition: "all 0.3s ease-in-out",
+                "&:hover": {
+                  transform: "translateY(-8px)",
+                  boxShadow: "0 12px 20px rgba(0,0,0,0.15)",
+                },
+                borderRadius: 1,
+                padding: 1,
+                overflow: "hidden",
+              }}
+            >
+              <Box sx={{ position: "relative" }}>
+                <Link to={`/productDetails/${product.id}`}>
                   <CardMedia
                     sx={{
                       height: 200,
@@ -63,111 +64,111 @@ const ProductCard = () => {
                     }}
                     image={product?.image.thumbnail}
                   />
+                </Link>
 
-                  <Chip
-                    label={"20%"}
-                    size="small"
-                    sx={{
-                      position: "absolute",
-                      top: 16,
-                      right: 16,
-                      textTransform: "capitalize",
-                      color: "white",
-                      backgroundColor: " #EAB308",
-                    }}
-                  />
-                </Box>
+                <Chip
+                  label={"20%"}
+                  size="small"
+                  sx={{
+                    position: "absolute",
+                    top: 16,
+                    right: 16,
+                    textTransform: "capitalize",
+                    color: "white",
+                    backgroundColor: " #EAB308",
+                  }}
+                />
+              </Box>
 
-                <CardContent sx={{ flexGrow: 1, p: 2 }}>
-                  <Tooltip title={product?.title} arrow>
-                    <Typography
-                      gutterBottom
-                      variant="h7"
-                      component="div"
-                      sx={{
-                        fontWeight: 600,
-                        lineHeight: 1.3,
-                        overflow: "hidden",
-                        display: "-webkit-box",
-                        WebkitLineClamp: 2,
-                        WebkitBoxOrient: "vertical",
-                        cursor: "pointer",
-                      }}
-                    >
-                      {product?.name}
-                    </Typography>
-                  </Tooltip>
-
+              <CardContent sx={{ flexGrow: 1, p: 2 }}>
+                <Tooltip title={product?.title} arrow>
                   <Typography
-                    variant="body2"
-                    sx={{
-                      color: "text.secondary",
-                      mb: 2,
-
-                      overflow: "hidden",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                    }}
-                  >
-                    {product?.unit}
-                  </Typography>
-
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: "text.secondary",
-                      overflow: "hidden",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: "vertical",
-                    }}
-                  >
-                    {"$5.122"}
-                  </Typography>
-                </CardContent>
-
-                <CardActions
-                  sx={{ p: 2, pt: 0, justifyContent: "space-between" }}
-                >
-                  <Typography
-                    variant="h6"
+                    gutterBottom
+                    variant="h7"
                     component="div"
                     sx={{
-                      fontWeight: "normal",
-                      color: "primary.main",
-                      color: " #009F7F",
-                    }}
-                  >
-                    ${product?.price}
-                  </Typography>
-                  <Button
-                    startIcon={<ShoppingBasketIcon />}
-                    size="small"
-                    variant="text"
-                    sx={{
-                      color: " #009F7F",
-                      borderRadius: "32px",
-                      textTransform: "none",
                       fontWeight: 600,
-                      backgroundColor: " #FFFFFF",
-                      padding: 1,
-                      paddingX: 3,
-                      border: "2px solid #e0e0e0",
-
-                      "&:hover": {
-                        transform: "scale(1.05)",
-                        backgroundColor: " #009F7F",
-                        color: " #FFFFFF",
-                        border: "none",
-                      },
+                      lineHeight: 1.3,
+                      overflow: "hidden",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: "vertical",
+                      cursor: "pointer",
                     }}
                   >
-                    Cart
-                  </Button>
-                </CardActions>
-              </Card>
-            </Grid>
+                    {product?.name}
+                  </Typography>
+                </Tooltip>
+
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    mb: 2,
+
+                    overflow: "hidden",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                  }}
+                >
+                  {product?.unit}
+                </Typography>
+
+                <Typography
+                  variant="body2"
+                  sx={{
+                    color: "text.secondary",
+                    overflow: "hidden",
+                    display: "-webkit-box",
+                    WebkitLineClamp: 2,
+                    WebkitBoxOrient: "vertical",
+                  }}
+                >
+                  {"$5.122"}
+                </Typography>
+              </CardContent>
+
+              <CardActions
+                sx={{ p: 2, pt: 0, justifyContent: "space-between" }}
+              >
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{
+                    fontWeight: "normal",
+                    color: "primary.main",
+                    color: " #009F7F",
+                  }}
+                >
+                  ${product?.price}
+                </Typography>
+                <Button
+                  startIcon={<ShoppingBasketIcon />}
+                  size="small"
+                  variant="text"
+                  sx={{
+                    color: " #009F7F",
+                    borderRadius: "32px",
+                    textTransform: "none",
+                    fontWeight: 600,
+                    backgroundColor: " #FFFFFF",
+                    padding: 1,
+                    paddingX: 3,
+                    border: "2px solid #e0e0e0",
+
+                    "&:hover": {
+                      transform: "scale(1.05)",
+                      backgroundColor: " #009F7F",
+                      color: " #FFFFFF",
+                      border: "none",
+                    },
+                  }}
+                >
+                  Cart
+                </Button>
+              </CardActions>
+            </Card>
           );
         })}
       </Grid>

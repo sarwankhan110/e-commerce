@@ -11,6 +11,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import Home from "./pages/Home";
 import ProductCard from "./components/ProductCard";
+import ProductDetails from "./pages/ProductDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,7 @@ const router = createBrowserRouter([
   },
   { path: "signup", Component: Signup },
   { path: "login", Component: Login },
+  { path: "productDetails/:product_id", Component: ProductDetails },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
