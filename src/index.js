@@ -8,10 +8,10 @@ import Signup from "./components/auth/Signup";
 import Login from "./components/auth/Login";
 import { createBrowserRouter, RouterProvider } from "react-router";
 import { Provider } from "react-redux";
-import store from "./store/store";
 import Home from "./pages/Home";
 import ProductCard from "./components/ProductCard";
 import ProductDetails from "./pages/ProductDetails";
+import {store} from "./store/store"
 
 const router = createBrowserRouter([
   {
@@ -20,11 +20,12 @@ const router = createBrowserRouter([
     children: [
       { path: "", Component: Home},
       { path: "products", Component: ProductCard },
+      { path: "productDetails/:product_id", Component: ProductDetails },
     ],
   },
   { path: "signup", Component: Signup },
   { path: "login", Component: Login },
-  { path: "productDetails/:product_id", Component: ProductDetails },
+  // { path: "productDetails/:product_id", Component: ProductDetails },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));

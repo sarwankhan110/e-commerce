@@ -6,6 +6,7 @@ import IMG2 from "../assets/image2.png";
 import IMG3 from "../assets/image3.png";
 import IMG4 from "../assets/image4.png";
 import ProductCard from "../components/ProductCard";
+import DropDown from "../components/dropDown/DropDown";
 
 const Home = () => {
   return (
@@ -43,7 +44,7 @@ const Home = () => {
                 borderRadius: "4px 0 0 4px",
                 boxShadow: "0 12px 20px rgba(0,0,0,0.15)",
                 border: "solid 1px",
-                  borderColor: "#ffffffff",
+                borderColor: "#ffffffff",
                 "&:hover": {
                   border: "solid 1px",
                   borderColor: "#009F7F",
@@ -108,7 +109,12 @@ const Home = () => {
         <img src={IMG3} alt="Image 3" />
         <img src={IMG4} alt="Image 4" />
       </Box>
-      <ProductCard />
+      <Box sx={{
+        display: "flex",
+      }}>
+        <DropDown />
+        <ProductCard />
+      </Box>
     </Box>
   );
 };

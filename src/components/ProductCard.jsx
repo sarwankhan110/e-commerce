@@ -14,6 +14,8 @@ import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router";
+import { useDispatch } from "react-redux";
+import { addProduct } from "../store/Slices/productSlice";
 
 const ProductCard = () => {
   const [products, setProducts] = useState([]);
@@ -27,7 +29,8 @@ const ProductCard = () => {
 
     fetchProducts();
   }, []);
-  // console.log(products);
+  const dispatch = useDispatch()
+  console.log(products);
   return (
     <Box className="my-5">
       <Grid  container spacing={2} justifyContent="center" alignItems="center">
@@ -67,7 +70,7 @@ const ProductCard = () => {
                 </Link>
 
                 <Chip
-                  label={"20%"}
+                  label= {product?.quantity ? `${product.quantity}%` : ''}
                   size="small"
                   sx={{
                     position: "absolute",
@@ -123,9 +126,10 @@ const ProductCard = () => {
                     display: "-webkit-box",
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical",
+                    textDecoration: "line-through"
                   }}
                 >
-                  {"$5.122"}
+                  ${product?.price}
                 </Typography>
               </CardContent>
 
@@ -144,6 +148,7 @@ const ProductCard = () => {
                   ${product?.price}
                 </Typography>
                 <Button
+                  onClick={()=>{dispatch(addProduct(product))}}
                   startIcon={<ShoppingBasketIcon />}
                   size="small"
                   variant="text"
@@ -158,10 +163,9 @@ const ProductCard = () => {
                     border: "2px solid #e0e0e0",
 
                     "&:hover": {
-                      transform: "scale(1.05)",
                       backgroundColor: " #009F7F",
                       color: " #FFFFFF",
-                      border: "none",
+                      border: "2px solid #009F7F",
                     },
                   }}
                 >
