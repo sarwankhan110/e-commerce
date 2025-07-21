@@ -5,6 +5,8 @@ import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button, Card, TextField } from "@mui/material";
+import { Link, useNavigate } from "react-router";
+import { Navigate } from "react-router";
 
 const schema = yup.object({
   email: yup.string().required(),
@@ -12,6 +14,7 @@ const schema = yup.object({
 });
 
 const Login = () => {
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -26,6 +29,7 @@ const Login = () => {
     console.log(data);
     reset();
     alert("Login Successfull");
+    navigate("/");
   };
 
   return (
@@ -83,6 +87,7 @@ const Login = () => {
           >
             Login
           </Button>
+
           <div className="d-flex align-items-center my-3">
             <hr className="flex-grow-1" />
             <p className="m-2 ">or</p>
@@ -113,9 +118,11 @@ const Login = () => {
           <hr className="my-3" />
           <div className="d-flex gap-2 justify-content-center align">
             <p className="text-secondary">Don't have an acccount?</p>
-            <p className="fw-bolder primary-green text-decoration-underline">
-              Register
-            </p>
+            <Link to={`/signup`}>
+              <p className="fw-bolder primary-green text-decoration-underline">
+                Register
+              </p>
+            </Link>
           </div>
         </form>
       </Card>

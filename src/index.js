@@ -11,14 +11,14 @@ import { Provider } from "react-redux";
 import Home from "./pages/Home";
 import ProductCard from "./components/ProductCard";
 import ProductDetails from "./pages/ProductDetails";
-import {store} from "./store/store"
+import { store } from "./store/store";
 
 const router = createBrowserRouter([
   {
     path: "/",
     Component: App,
     children: [
-      { path: "", Component: Home},
+      { path: "", Component: Home },
       { path: "products", Component: ProductCard },
       { path: "productDetails/:product_id", Component: ProductDetails },
     ],

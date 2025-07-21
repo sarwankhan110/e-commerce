@@ -85,8 +85,8 @@ const DropDown = () => {
   };
 
   return (
-    <Box className="px-5">
-      <List className="text-xs xl:py-8 px-5">
+    <Box sx={{ minWidth: "30vh" }}>
+      <List className="text-xs xl:py-8 px-2">
         {menuItems.map((item, index) => (
           <div key={index}>
             <ListItem

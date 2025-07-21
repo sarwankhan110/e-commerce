@@ -29,11 +29,11 @@ const ProductCard = () => {
 
     fetchProducts();
   }, []);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   console.log(products);
   return (
-    <Box className="my-5">
-      <Grid  container spacing={2} justifyContent="center" alignItems="center">
+    <Box className="">
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
         {products?.map((product) => {
           return (
             <Card
@@ -70,7 +70,7 @@ const ProductCard = () => {
                 </Link>
 
                 <Chip
-                  label= {product?.quantity ? `${product.quantity}%` : ''}
+                  label={product?.quantity ? `${product.quantity}%` : ""}
                   size="small"
                   sx={{
                     position: "absolute",
@@ -126,7 +126,7 @@ const ProductCard = () => {
                     display: "-webkit-box",
                     WebkitLineClamp: 2,
                     WebkitBoxOrient: "vertical",
-                    textDecoration: "line-through"
+                    textDecoration: "line-through",
                   }}
                 >
                   ${product?.price}
@@ -148,7 +148,9 @@ const ProductCard = () => {
                   ${product?.price}
                 </Typography>
                 <Button
-                  onClick={()=>{dispatch(addProduct(product))}}
+                  onClick={() => {
+                    dispatch(addProduct(product));
+                  }}
                   startIcon={<ShoppingBasketIcon />}
                   size="small"
                   variant="text"

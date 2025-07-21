@@ -5,6 +5,7 @@ import { Controller, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
+import { Link, useNavigate } from "react-router";
 
 const schema = yup.object({
   email: yup.string().required(),
@@ -13,6 +14,7 @@ const schema = yup.object({
 });
 
 const Signup = () => {
+  const navigate = useNavigate();
   const {
     handleSubmit,
     control,
@@ -27,6 +29,7 @@ const Signup = () => {
     console.log(data);
     reset();
     alert("Signin Successfull");
+    navigate("/");
   };
   return (
     <Box className="d-flex justify-content-center align-items-cente p-5">
@@ -109,9 +112,11 @@ const Signup = () => {
 
           <div className="d-flex gap-2 justify-content-center align">
             <p className="text-secondary">Already have an account?</p>
-            <p className="fw-bolder primary-green text-decoration-underline">
-              Login
-            </p>
+            <Link to={`/login`}>
+              <p className="fw-bolder primary-green text-decoration-underline">
+                Login
+              </p>
+            </Link>
           </div>
         </form>
       </Card>

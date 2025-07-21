@@ -18,7 +18,6 @@ const Home = () => {
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
-          // justifyContent: "center",
           backgroundImage: `url(${HEROIMAGE})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
@@ -109,9 +108,12 @@ const Home = () => {
         <img src={IMG3} alt="Image 3" />
         <img src={IMG4} alt="Image 4" />
       </Box>
-      <Box sx={{
-        display: "flex",
-      }}>
+      <Box
+        sx={{
+          display: "flex",
+          mt: 4,
+        }}
+      >
         <DropDown />
         <ProductCard />
       </Box>

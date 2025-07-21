@@ -18,6 +18,7 @@ import {
   Spa as BeautyIcon,
   Restaurant as MeatIcon,
 } from "@mui/icons-material";
+import { Link } from "react-router";
 
 const Navbar = () => {
   const { checkOutProducts } = useSelector((state) => state.product);
@@ -199,12 +200,14 @@ const Navbar = () => {
                     }}
                   />
                 </Badge>
-                <button
-                  className="btn primary-green-bg white-color fw-medium"
-                  type="submit"
-                >
-                  Join
-                </button>
+                <Link to={`/login`}>
+                  <button
+                    className="btn primary-green-bg white-color fw-medium"
+                    type="submit"
+                  >
+                    Join
+                  </button>
+                </Link>
                 <button
                   className="btn primary-green-bg white-color fw-medium"
                   type="submit"
